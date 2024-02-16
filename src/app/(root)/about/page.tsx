@@ -5,7 +5,7 @@ import Founders from "@/components/homelements/Founders";
 import FrontContent from "@/components/homelements/FrontContent";
 import Testimonials from "@/components/homelements/Testimonials";
 
-export default function Home() {
+export default function About() {
   return (
     <div>
       <div

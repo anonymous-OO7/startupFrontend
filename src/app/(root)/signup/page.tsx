@@ -5,7 +5,6 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import Input from "@/components/common/Input";
 import Spacer from "@/components/common/Spacer";
-import Label from "@/components/common/Label";
 import { LoadingIcon } from "@/assets/images/Loading";
 import { useRouter } from "next/navigation";
 
@@ -18,7 +17,7 @@ const INTIAL_VALUES = {
 };
 
 export default function SignUp() {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(false); // eslint-disable-line
   const router = useRouter();
 
   const navigateToDashboard = React.useCallback(() => {
@@ -27,11 +26,11 @@ export default function SignUp() {
 
   const handleSubmit = React.useCallback(
     ({
-      name,
-      email,
-      phone,
-      institution_name,
-      course,
+      name, // eslint-disable-line
+      email, // eslint-disable-line
+      phone, // eslint-disable-line
+      institution_name, // eslint-disable-line
+      course, // eslint-disable-line
     }: typeof INTIAL_VALUES) => {
       navigateToDashboard();
     },
