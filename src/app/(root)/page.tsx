@@ -7,6 +7,9 @@ const Home: React.FC = () => {
   return (
     <div>
       <div className="container h-screen mx-auto py-10">
+        <div className="bg-gray-700 w-full">
+          <button>Submit</button>
+        </div>
         <h1 className="text-2xl font-semibold mb-4 font-poppins">
           Whats happening
         </h1>

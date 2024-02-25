@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { multiFormatDateString } from "@/lib/utils";
+import PostStats from "@/components/shared/PostStats";
 
 // type PostCardProps = {
 //   post: Models.Document;
@@ -90,6 +91,8 @@ const PostBlock = ({ post }: PostCardProps) => {
             className=" h-64 xs:h-[350px] lg:h-[400px] w-full rounded-[24px] object-cover mb-5"
           />
         </Link>
+
+        <PostStats />
       </div>
     </div>
   );
