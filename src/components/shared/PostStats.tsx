@@ -62,7 +62,7 @@ const PostStats = ({ userId = "NA" }) => {
           width={20}
           height={20}
           className="cursor-pointer"
-          onClick={(e) => handleSavePost()}
+          onClick={() => handleSavePost()}
         />
       </div>
     </div>
