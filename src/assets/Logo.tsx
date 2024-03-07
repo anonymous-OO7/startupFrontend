@@ -11,7 +11,7 @@ export const Logo = () => (
     x="0px"
     y="0px"
     width="30px"
-    height="30px"
+    height="20px"
     viewBox="0 0 512 512"
     xmlSpace="preserve"
   >

@@ -75,13 +75,13 @@ const PostBlock = ({ post }: PostCardProps) => {
         <Link href={`/posts/${post.$id}`}>
           <div className="text-[14px] font-poppins font-medium leading-[140%] lg:text-[16px] lg:font-medium lg:leading-[140%] py-5">
             <p>{post.caption}</p>
-            <ul className="flex  font-poppins gap-1 mt-2">
+            <ul className="flex  text-sm font-poppins gap-1 mt-2">
               {/* {post.tags.map((tag: string, index: string) => (
               <li key={`${tag}${index}`} className="text-light-3 small-regular">
                 #{tag}
               </li>
             ))} */}
-              `#tags`
+              #tags
             </ul>
           </div>
 
