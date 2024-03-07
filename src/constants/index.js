@@ -242,3 +242,129 @@ export const posts = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&usqp=CAU",
   },
 ];
+
+export const threads = [
+  {
+    id: "1",
+    currentUserId: "user123",
+    parentId: null,
+    content: "This is the main thread content",
+    author: {
+      name: "John Doe",
+      image: "/path/to/user/image.jpg",
+      id: "author123",
+    },
+    community: {
+      id: "community123",
+      name: "Sample Community",
+      image: "/path/to/community/image.jpg",
+    },
+    createdAt: "2024-03-07T12:00:00Z",
+    comments: [
+      {
+        author: {
+          image: "/path/to/commenter/image1.jpg",
+        },
+      },
+      {
+        author: {
+          image: "/path/to/commenter/image2.jpg",
+        },
+      },
+    ],
+  },
+  {
+    id: "2",
+    currentUserId: "user456",
+    parentId: null,
+    content: "This is another thread without any comments.",
+    author: {
+      name: "Jane Smith",
+      image: "/path/to/another/user/image.jpg",
+      id: "author456",
+    },
+    community: {
+      id: "community456",
+      name: "Another Sample Community",
+      image: "/path/to/another/community/image.jpg",
+    },
+    createdAt: "2024-03-08T10:00:00Z",
+    comments: [],
+  },
+  {
+    id: "3",
+    currentUserId: "user789",
+    parentId: null,
+    content: "Thread with some comments.",
+    author: {
+      name: "Alice Johnson",
+      image: "/path/to/yet/another/user/image.jpg",
+      id: "author789",
+    },
+    community: {
+      id: "community789",
+      name: "Yet Another Sample Community",
+      image: "/path/to/yet/another/community/image.jpg",
+    },
+    createdAt: "2024-03-09T08:00:00Z",
+    comments: [
+      {
+        author: {
+          image: "/path/to/commenter/image3.jpg",
+        },
+      },
+    ],
+  },
+  {
+    id: "4",
+    currentUserId: "user123",
+    parentId: null,
+    content: "Yet another thread without comments.",
+    author: {
+      name: "John Doe",
+      image: "/path/to/user/image.jpg",
+      id: "author123",
+    },
+    community: {
+      id: "community123",
+      name: "Sample Community",
+      image: "/path/to/community/image.jpg",
+    },
+    createdAt: "2024-03-10T15:00:00Z",
+    comments: [],
+  },
+  {
+    id: "5",
+    currentUserId: "user789",
+    parentId: null,
+    content: "Thread with more comments.",
+    author: {
+      name: "Alice Johnson",
+      image: "/path/to/yet/another/user/image.jpg",
+      id: "author789",
+    },
+    community: {
+      id: "community789",
+      name: "Yet Another Sample Community",
+      image: "/path/to/yet/another/community/image.jpg",
+    },
+    createdAt: "2024-03-11T17:00:00Z",
+    comments: [
+      {
+        author: {
+          image: "/path/to/commenter/image4.jpg",
+        },
+      },
+      {
+        author: {
+          image: "/path/to/commenter/image5.jpg",
+        },
+      },
+      {
+        author: {
+          image: "/path/to/commenter/image6.jpg",
+        },
+      },
+    ],
+  },
+];

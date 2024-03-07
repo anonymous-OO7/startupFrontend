@@ -3,6 +3,10 @@ import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
+import Heart from "../../assets/heart-gray.svg";
+import Reply from "../../assets/reply.svg";
+import Repost from "../../assets/repost.svg";
+import Share from "../../assets/share.svg";
 
 interface Props {
   id: string;
@@ -57,7 +61,7 @@ function ThreadCard({
               />
             </Link>
 
-            <div className="thread-card_bar" />
+            <div className="relative mt-2 w-0.5 grow rounded-full bg-neutral-800" />
           </div>
 
           <div className="flex w-full flex-col">
@@ -72,7 +76,7 @@ function ThreadCard({
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
                 <Image
-                  src="/assets/heart-gray.svg"
+                  src={Heart}
                   alt="heart"
                   width={24}
                   height={24}
@@ -80,7 +84,7 @@ function ThreadCard({
                 />
                 <Link href={`/thread/${id}`}>
                   <Image
-                    src="/assets/reply.svg"
+                    src={Reply}
                     alt="heart"
                     width={24}
                     height={24}
@@ -88,14 +92,14 @@ function ThreadCard({
                   />
                 </Link>
                 <Image
-                  src="/assets/repost.svg"
+                  src={Repost}
                   alt="heart"
                   width={24}
                   height={24}
                   className="cursor-pointer object-contain"
                 />
                 <Image
-                  src="/assets/share.svg"
+                  src={Share}
                   alt="heart"
                   width={24}
                   height={24}
