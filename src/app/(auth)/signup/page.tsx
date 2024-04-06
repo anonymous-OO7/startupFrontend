@@ -7,13 +7,28 @@ import Input from "@/components/common/Input";
 import Spacer from "@/components/common/Spacer";
 import { LoadingIcon } from "@/assets/images/Loading";
 import { useRouter } from "next/navigation";
+import Select from "@/components/common/Select";
+import { SelectType } from "@/types";
+
+const Gender: SelectType[] = [
+  {
+    label: "Male",
+    value: "male",
+  },
+  {
+    label: "Female",
+    value: "female",
+  },
+];
 
 const INTIAL_VALUES = {
   name: "",
   email: "",
+  gender: "",
   phone: "",
   institution_name: "",
-  course: "",
+  course_field: "",
+  country: "",
 };
 
 export default function SignUp() {
@@ -28,9 +43,11 @@ export default function SignUp() {
     ({
       name, // eslint-disable-line
       email, // eslint-disable-line
+      gender, // eslint-disable-line
       phone, // eslint-disable-line
       institution_name, // eslint-disable-line
-      course, // eslint-disable-line
+      course_field, // eslint-disable-line
+      country, // eslint-disable-line
     }: typeof INTIAL_VALUES) => {
       navigateToDashboard();
     },
@@ -43,9 +60,13 @@ export default function SignUp() {
     email: Yup.string()
       .email("Invalid  email format")
       .required(" Email is required"),
-    institution_name: Yup.string().required("Institution name is required"),
-    course: Yup.mixed().required("Course is required"),
+    gender: Yup.string().required("Gender is required"),
+    institution_name: Yup.string().required("Company/School name is required"),
+    course_field: Yup.mixed().required("Course is required"),
+    country: Yup.mixed().required("Country is required"),
   });
+
+  const handleGenderType = React.useCallback(() => {}, []);
 
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -68,13 +89,28 @@ export default function SignUp() {
             <Spacer size="xs" />
             <Input label="Email" placeholder="Email" name="email" />
             <Spacer size="xs" />
+            <Select
+              name="gender"
+              item={Gender}
+              label="Gender"
+              placeholder="Gender"
+              onSelect={handleGenderType}
+            />
+            <Spacer size="xs" />
+
             <Input
-              label="Institution Name"
-              placeholder="Institution Name"
+              label="Company/School"
+              placeholder="Company/School"
               name="institution_name"
             />
             <Spacer size="xs" />
-            <Input label="Course" placeholder="Course" name="course" />
+            <Input
+              label="Title/Field"
+              placeholder="Title/Field"
+              name="course_field"
+            />
+            <Spacer size="xs" />
+            <Input label="Country" placeholder="Country" name="country" />
             <Spacer size="xs" />
             <div className="flex justify-center items-center">
               {loading ? (

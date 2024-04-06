@@ -33,7 +33,7 @@ export default function Main({ children }: Props) {
         <DashHeader />
       </div>
       <Body sideView={<SidebarNew setExpandedMain={setExpandedMain} />}>
-        <div className="p-4">
+        <div className="p-4 bg-white">
           <div
             className={`mt-14 transition-all ${
               expandedMain ? "sm:ml-60" : "sm:ml-24"

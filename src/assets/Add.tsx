@@ -17,8 +17,8 @@ export const Add = () => (
       d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17"
       stroke="#000000"
       stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
