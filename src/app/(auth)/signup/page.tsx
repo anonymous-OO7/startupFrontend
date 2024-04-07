@@ -9,6 +9,7 @@ import { LoadingIcon } from "@/assets/images/Loading";
 import { useRouter } from "next/navigation";
 import Select from "@/components/common/Select";
 import { SelectType } from "@/types";
+import useStore from "@/store";
 
 const Gender: SelectType[] = [
   {
@@ -34,9 +35,10 @@ const INTIAL_VALUES = {
 export default function SignUp() {
   const [loading, setLoading] = React.useState(false); // eslint-disable-line
   const router = useRouter();
+  const { setAuthToken } = useStore();
 
-  const navigateToDashboard = React.useCallback(() => {
-    router.push(`/dashboard`);
+  const navigateToHomePage = React.useCallback(() => {
+    router.replace("/");
   }, [router]);
 
   const handleSubmit = React.useCallback(
@@ -49,9 +51,18 @@ export default function SignUp() {
       course_field, // eslint-disable-line
       country, // eslint-disable-line
     }: typeof INTIAL_VALUES) => {
-      navigateToDashboard();
+      setLoading(true);
+      localStorage.setItem("authToken", "ABCD");
+      localStorage.setItem("user_id", `01`);
+      localStorage.setItem("email", email);
+      localStorage.setItem("name", name);
+      localStorage.setItem("role", course_field);
+      // setUser(decode);
+      setAuthToken("BACD");
+      setLoading(false);
+      navigateToHomePage();
     },
-    [navigateToDashboard],
+    [navigateToHomePage, setAuthToken],
   );
 
   const validationSchema = Yup.object().shape({

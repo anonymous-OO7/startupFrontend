@@ -7,3 +7,7 @@ export function generateYearList(yearsBack: number, yearsForward: number) {
 
   return years;
 }
+
+export function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}

@@ -1,9 +1,14 @@
+"use client";
+
 // pages/dashboard.tsx
 import PostBlock from "@/components/pages/home/PostBlock";
 import { posts } from "@/constants";
+import useTokenAndRoleCheck from "@/hooks/useTokenCheck";
 import React from "react";
 
 const Home: React.FC = () => {
+  useTokenAndRoleCheck();
+
   return (
     <div>
       <div className="container h-screen mx-auto py-10">

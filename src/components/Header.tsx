@@ -11,7 +11,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 40) {
-        setIsHeaderFixed(true);
+        setIsHeaderFixed(false);
       } else {
         setIsHeaderFixed(false);
       }

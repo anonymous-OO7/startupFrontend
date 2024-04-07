@@ -10,6 +10,7 @@ import { LoadingIcon } from "@/assets/images/Loading";
 import OtpInput from "react-otp-input";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { delay } from "@/utils/utils";
 
 const INTIAL_VALUES = {
   email: "",
@@ -33,15 +34,14 @@ const LoginPage = () => {
 
   const otpSubmit = async () => {
     setOtpLoading(true); // Set otpLoading to true
-
     // Use a promise with setTimeout to delay the execution for 3 seconds
-    await new Promise(() => {
-      // eslint-disable-line
-      // eslint-disable-line
-      // eslint-disable-line
-      setTimeout(() => {}, 3000); // 3000 milliseconds (3 seconds)
-    });
 
+    console.log("Start");
+
+    // Pause for 3 seconds
+    await delay(3000);
+
+    console.log("End");
     setOtpLoading(false); // Set otpLoading to false after 3 seconds
     navigateToSignup();
   };

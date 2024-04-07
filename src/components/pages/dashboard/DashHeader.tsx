@@ -21,8 +21,16 @@ import { SearchIcon } from "../../../assets/Search";
 import { Add } from "@/assets/Add";
 import Image from "next/image";
 import BellIcon from "../../../assets/bell.svg";
+import { useRouter } from "next/navigation";
 
 export default function DashHeader() {
+  const router = useRouter();
+
+  const handleLogout = React.useCallback(() => {
+    localStorage.clear();
+    router.replace("/info");
+  }, [router]);
+
   return (
     <Navbar isBordered className=" ">
       <NavbarContent justify="start">
@@ -113,7 +121,7 @@ export default function DashHeader() {
             <DropdownItem key="system">System</DropdownItem>
             <DropdownItem key="configurations">Configurations</DropdownItem>
             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
+            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
               Log Out
             </DropdownItem>
           </DropdownMenu>
