@@ -31,13 +31,10 @@ const Founders = () => (
                 Founder & Director
               </h3>
               <p className="text-black text-sm text-justify font-poppins">
-                A motorbike enthusiast, who enjoys adventure sport started his
-                career with Public Relations from where he stepped into the
-                Equipment Renting industry in 2002. For over 18 years, he has
-                been servicing this industry both in India and Overseas. Gaurav
-                holds a BCom (Hons) degree from Sri Ram College of Commerce
-                –Delhi and a Masters degree in Business Management from Mumbai
-                University.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Tempore repudiandae sed, cumque excepturi molestias consequatur
+                incidunt rem amet doloremque minima qui vitae quibusdam
+                doloribus deserunt, enim laborum est blanditiis ipsum.
               </p>
             </div>
           </div>
@@ -62,11 +59,13 @@ const Founders = () => (
                 Founder & Director
               </h3>
               <p className="text-black text-sm text-justify font-poppins">
-                An engineer from NIT (National Institute of Technology-
-                Jamshedpur) and MBA from Symbiosis - Pune started his career
-                with Mahindra Sintered Products. He also worked with Wipro
-                Infotech before stepping into the equipment renting Industry in
-                2004. Rohit is a swimming enthusiast
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Aspernatur, architecto iusto odit id eius omnis doloremque
+                eaque, sit excepturi iure provident dignissimos quidem mollitia
+                et nisi dolor obcaecati quia fugiat placeat rem accusamus
+                molestias temporibus. Quas labore, a id repudiandae, voluptatum
+                doloribus, iure provident architecto eligendi quia
+                exercitationem et cupiditate!
               </p>
             </div>
           </div>
