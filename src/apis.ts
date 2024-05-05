@@ -47,3 +47,27 @@ export const CreateUserApi = (
     {},
   );
 };
+
+export const UserPostApi = (
+  title: string,
+  text: string,
+  tags: string,
+  mediaFile: File,
+) => {
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("text", text);
+  formData.append("mediaType", "image/jpeg");
+  formData.append("tags", tags);
+  formData.append("mediaFile", mediaFile);
+
+  return onePiece.post("/api/posts/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const GetAllUserData = () => {
+  return onePiece.post("/user", {}, {});
+};

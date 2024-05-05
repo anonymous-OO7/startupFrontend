@@ -2,12 +2,14 @@
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
 import Link from "next/link";
+import { nextLocalStorage } from "@/utils/nextLocalStorage";
 
 const SidebarContext = createContext();
 
 export default function Sidebar({ children, setExpandedMain }) {
   const [expanded, setExpanded] = useState(true);
-
+  const name = nextLocalStorage()?.getItem("name") ?? "name";
+  const email = nextLocalStorage()?.getItem("email") ?? "";
   return (
     <div>
       {/* Sidebar for large devices */}
@@ -33,7 +35,11 @@ export default function Sidebar({ children, setExpandedMain }) {
               }}
               className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
             >
-              {expanded ? <ChevronFirst /> : <ChevronLast />}
+              {expanded ? (
+                <ChevronFirst color="#000" />
+              ) : (
+                <ChevronLast color="#000" />
+              )}
             </button>
           </div>
 
@@ -53,12 +59,13 @@ export default function Sidebar({ children, setExpandedMain }) {
                 overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}
               `}
             >
-              <div className="leading-4">
-                <h4 className="font-semibold text-black font-poppins ">
-                  John Doe
-                </h4>
-                <span className="text-xs text-gray-600 font-poppins font-normal">
-                  johndoe@gmail.com
+              <div className="leading-4 text-black">
+                <p> {name != "" ? name : ""}</p>
+                <span className="text-xs text-gray-600">
+                  <p className="text-black font-poppins font-normal text-sm">
+                    {" "}
+                    {email != "" ? email : ""}
+                  </p>
                 </span>
               </div>
               <MoreVertical size={20} />

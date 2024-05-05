@@ -8,40 +8,56 @@ import Spacer from "@/components/Spacer";
 import Label from "@/components/Label";
 import FileInput from "@/components/FileInput";
 import { LoadingIcon } from "@/assets/Loading";
+import useApi from "@/hooks/useApi";
+import { UserPostApi } from "@/apis";
+import useToast from "@/hooks/useToast";
 const INTIAL_VALUES = {
-  name: "",
-  code: "",
-  client_email: "",
-  account_manager_email: "",
-  end_of_term: "",
-  pdf_file: null as File | null,
-  address_1: "",
-  address_2: "",
-  address_3: "",
-  address_4: "",
-  address_5: "",
+  title: "",
+  description: "",
+  tags: "",
+  file: null as File | null,
 };
-export default function Mra() {
+export default function SubmitPost() {
   const [loading, setLoading] = React.useState(false); // eslint-disable-line
+  const { makeApiCall } = useApi();
 
-  const handleSubmit = React.useCallback(({}: typeof INTIAL_VALUES) => {}, []);
+  const { showToast } = useToast();
+
+  const handleSubmit = React.useCallback(
+    ({ title, description, tags, file }: typeof INTIAL_VALUES) => {
+      console.log(
+        "seding the post data",
+        title,
+        "---",
+        description,
+        "---",
+        tags,
+        "---",
+        file,
+      );
+
+      setLoading(true);
+      return makeApiCall(UserPostApi(title, description, tags, file!))
+        .then((response) => {
+          console.log(response, "RESPONSE OF Post user");
+          showToast("Posted successfully!!", { type: "success" });
+        })
+        .catch((error) => {
+          console.error("Post Error:- ", error);
+          showToast("Some error occurred!!", { type: "error" });
+        })
+        .finally(() => setLoading(false));
+    },
+    [showToast, makeApiCall],
+  );
+
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Client name is required"),
-    code: Yup.string().required("Client code is required"),
-    client_email: Yup.string()
-      .email("Invalid client email format")
-      .required("Client email is required"),
-    account_manager_email: Yup.string()
-      .email("Invalid account manager email format")
-      .required("Client account manager email is required"),
-    end_of_term: Yup.string().required("Client end of term is required"),
-    pdf_file: Yup.mixed().required("File is required"),
-    address_1: Yup.string(),
-    address_2: Yup.string(),
-    address_3: Yup.string(),
-    address_4: Yup.string(),
-    address_5: Yup.string(),
+    title: Yup.string().required("Title is required"),
+    description: Yup.string().required("Give some description!"),
+    tags: Yup.string().required("Give some tags"),
+    file: Yup.mixed().required("Give some document is required"),
   });
+
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -59,14 +75,14 @@ export default function Mra() {
           <Form>
             <Spacer size="xs" />
 
-            <Input label="Title" placeholder="Enter Title" name="name" />
+            <Input label="Title" placeholder="Enter Title" name="title" />
             <Spacer size="xs" />
-            <Input label="Text" placeholder="Enter Text" name="code" />
+            <Input label="Text" placeholder="Enter Text" name="description" />
             <Spacer size="xs" />
-            <Input label="Tags" placeholder="Enter tags" name="client_email" />
+            <Input label="Tags" placeholder="Enter tags" name="tags" />
             <Spacer size="xs" />
             <Label>Upload Image & Video</Label>
-            <FileInput name="pdf_file" type="dropzone" accept=".pdf" />
+            <FileInput name="file" type="dropzone" />
             <Spacer size="xs" />
             <div className="flex justify-center items-center">
               {loading ? (

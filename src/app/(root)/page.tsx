@@ -1,13 +1,31 @@
 "use client";
 
+import { GetAllUserData } from "@/apis";
 // pages/dashboard.tsx
 import PostBlock from "@/components/pages/home/PostBlock";
 import { posts } from "@/constants";
+import useApi from "@/hooks/useApi";
 import useTokenCheck from "@/hooks/useTokenCheck";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Home: React.FC = () => {
   useTokenCheck();
+  const { makeApiCall } = useApi();
+  const [loading, setLoading] = React.useState(false); // eslint-disable-line
+
+  useEffect(() => {
+    setLoading(true);
+    makeApiCall(GetAllUserData())
+      .then((response) => {
+        if (response !== undefined) {
+          console.log("ALL USER DATA FETCHED", response);
+        }
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [makeApiCall]);
 
   return (
     <div>

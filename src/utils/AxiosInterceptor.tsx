@@ -11,8 +11,8 @@ interface Props {
 
 const baseOnePieceURLS =
   getEnviromentVariable() === "staging"
-    ? "http://3.68.94.171:8090/"
-    : "http://3.68.94.171:8090/";
+    ? "http://3.79.194.15:8090/"
+    : "http://3.79.194.15:8090/";
 
 const baseBakiURL =
   getEnviromentVariable() === "staging"
