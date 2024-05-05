@@ -31,6 +31,8 @@ const LoginPage = () => {
     ({ email }: typeof INTIAL_VALUES) => {
       setLoading(true);
       setEmail(email);
+      localStorage.setItem("email", email);
+
       return makeApiCall(LoginApi(email))
         .then((response) => {
           console.log(response, "RESPONSE OF OTP SENT");
@@ -56,7 +58,12 @@ const LoginPage = () => {
           if (response?.validOtp == true) {
             console.log("OTP VERIfy SUCCESS");
             showToast("OTP verified successfully!!", { type: "success" });
-            navigateToSignup();
+            if (response?.existingUser == true) {
+              localStorage.setItem("authToken", response?.token);
+              navigateToHomePage();
+            } else {
+              navigateToSignup();
+            }
           } else {
             console.log("OTP invalid ");
             showToast("Please enter valid otp!!", { type: "error" });
@@ -74,6 +81,10 @@ const LoginPage = () => {
 
   const navigateToSignup = React.useCallback(() => {
     router.push(`/signup`);
+  }, [router]);
+
+  const navigateToHomePage = React.useCallback(() => {
+    router.replace("/");
   }, [router]);
 
   const onOtpChange = (text: string) => {

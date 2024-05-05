@@ -9,7 +9,10 @@ import { LoadingIcon } from "@/assets/images/Loading";
 import { useRouter } from "next/navigation";
 import Select from "@/components/common/Select";
 import { SelectType } from "@/types";
-import useStore from "@/store";
+import useApi from "@/hooks/useApi";
+import { nextLocalStorage } from "@/utils/nextLocalStorage";
+import { CreateUserApi } from "@/apis";
+import useToast from "@/hooks/useToast";
 
 const Gender: SelectType[] = [
   {
@@ -24,18 +27,30 @@ const Gender: SelectType[] = [
 
 const INTIAL_VALUES = {
   name: "",
-  email: "",
+  email:
+    nextLocalStorage()?.getItem("email") ??
+    nextLocalStorage()?.getItem("email"),
   gender: "",
   phone: "",
   institution_name: "",
   course_field: "",
   country: "",
+  username: "",
 };
 
 export default function SignUp() {
   const [loading, setLoading] = React.useState(false); // eslint-disable-line
   const router = useRouter();
-  const { setAuthToken } = useStore();
+  const emailocal = nextLocalStorage()?.getItem("email");
+  const { makeApiCall } = useApi();
+  const { showToast } = useToast();
+
+  React.useEffect(() => {
+    if (emailocal && emailocal == "") {
+      localStorage.clear();
+      router.replace("/login");
+    }
+  }, [emailocal, router]);
 
   const navigateToHomePage = React.useCallback(() => {
     router.replace("/");
@@ -43,26 +58,77 @@ export default function SignUp() {
 
   const handleSubmit = React.useCallback(
     ({
-      name, // eslint-disable-line
-      email, // eslint-disable-line
-      gender, // eslint-disable-line
-      phone, // eslint-disable-line
-      institution_name, // eslint-disable-line
-      course_field, // eslint-disable-line
-      country, // eslint-disable-line
+      name,
+      email,
+      gender,
+      phone,
+      institution_name,
+      course_field,
+      country,
+      username,
     }: typeof INTIAL_VALUES) => {
+      console.log(
+        "DATA Sending for user creation",
+        name,
+        "--",
+        email,
+        "---",
+        gender,
+        "---",
+        phone,
+        "---",
+        institution_name,
+        "--",
+        course_field,
+        "--",
+        country,
+        "--",
+        username,
+      );
+
       setLoading(true);
-      localStorage.setItem("authToken", "ABCD");
+
+      // Handle null or undefined values by providing default values or skipping if they are not available.
+      const sanitizedEmail = email || ""; // Provide default value if email is undefined or null
+      const sanitizedName = name || ""; // Provide default value if name is undefined or null
+      const sanitizedUsername = username || ""; // Provide default value if username is undefined or null
+      const sanitizedInstitutionName = institution_name || ""; // Provide default value if institution_name is undefined or null
+      const sanitizedGender = gender || ""; // Provide default value if gender is undefined or null
+      const sanitizedPhone = phone || ""; // Provide default value if phone is undefined or null
+      const sanitizedCourseField = course_field || ""; // Provide default value if course_field is undefined or null
+
       localStorage.setItem("user_id", `01`);
-      localStorage.setItem("email", email);
-      localStorage.setItem("name", name);
-      localStorage.setItem("role", course_field);
-      // setUser(decode);
-      setAuthToken("BACD");
-      setLoading(false);
-      navigateToHomePage();
+      localStorage.setItem("name", sanitizedName);
+      localStorage.setItem("institution_name", sanitizedInstitutionName);
+      localStorage.setItem("phone", sanitizedPhone);
+      localStorage.setItem("gender", sanitizedGender);
+
+      return makeApiCall(
+        CreateUserApi(
+          sanitizedEmail,
+          sanitizedName,
+          sanitizedUsername,
+          sanitizedInstitutionName,
+          sanitizedGender,
+          sanitizedInstitutionName,
+          sanitizedPhone,
+          sanitizedCourseField,
+        ),
+      )
+        .then((response) => {
+          console.log(response, "RESPONSE OF USER CREATION");
+          localStorage.setItem("authToken", response?.token);
+          setLoading(false);
+          showToast("User created successfully!!", { type: "success" });
+          navigateToHomePage();
+        })
+        .catch((error) => {
+          console.error("SIGNup Error:- ", error);
+          setLoading(false);
+          showToast("Some error occurred!!", { type: "error" });
+        });
     },
-    [navigateToHomePage, setAuthToken],
+    [navigateToHomePage, makeApiCall, showToast],
   );
 
   const validationSchema = Yup.object().shape({
@@ -95,6 +161,12 @@ export default function SignUp() {
         >
           <Form>
             <Input label="Name" placeholder="Name" name="name" />
+            <Spacer size="xs" />
+            <Input
+              label="User name"
+              placeholder="Enter Username"
+              name="username"
+            />
             <Spacer size="xs" />
             <Input label="Phone Number" placeholder="Phone" name="phone" />
             <Spacer size="xs" />

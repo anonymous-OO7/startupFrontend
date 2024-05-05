@@ -2,16 +2,15 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { nextLocalStorage } from "../utils/nextLocalStorage";
 
-export default function useTokenAndRoleCheck() {
+export default function useTokenCheck() {
   const router = useRouter();
 
   React.useEffect(() => {
     const token = nextLocalStorage()?.getItem("authToken");
-    const role = nextLocalStorage()?.getItem("role");
 
-    if (!token || token === "" || !role || role === "") {
+    if (!token || token === "") {
+      console.log("TOKEN empty or undefined");
       localStorage.removeItem("authToken");
-      localStorage.removeItem("role");
       router.replace("/info");
     }
   }, [router]);
