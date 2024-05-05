@@ -54,8 +54,12 @@ export default function Sidebar({ children, setExpandedMain }) {
               `}
             >
               <div className="leading-4">
-                <h4 className="font-semibold">John Doe</h4>
-                <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+                <h4 className="font-semibold text-black font-poppins ">
+                  John Doe
+                </h4>
+                <span className="text-xs text-gray-600 font-poppins font-normal">
+                  johndoe@gmail.com
+                </span>
               </div>
               <MoreVertical size={20} />
             </div>

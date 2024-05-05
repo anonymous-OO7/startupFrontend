@@ -15,26 +15,26 @@ const TechContent = () => {
             </span>
           </div>
 
-          <div className="w-full flex justify-between my-4 ">
-            <button className="min-w-28 px-4 py-3  rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
-              <p className="font-poppins font-normal text-xl">Data</p>
+          <div className="flex flex-wrap justify-between my-4 ">
+            <button className="w-auto sm:min-w-28 px-4 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
+              <p className="font-poppins font-normal text-base sm:text-xl">
+                Data
+              </p>
             </button>
-            <button className=" px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
+            <button className="w-auto px-8 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
               <p className="font-poppins font-normal text-xl">Network</p>
             </button>
-            <button className="px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
+            <button className="w-auto px-8 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
               <p className="font-poppins font-normal text-xl">Deep Learning</p>
             </button>
-            <button className="px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
-              <p className="font-poppins font-normal text-xl">Robotics</p>
-            </button>
-            <button className="px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
+
+            <button className="w-auto px-8 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
               <p className="font-poppins font-normal text-xl">Web</p>
             </button>
-            <button className="px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
+            <button className="w-auto px-8 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
               <p className="font-poppins font-normal text-xl">Algorithm</p>
             </button>
-            <button className="px-8 py-3 rounded-full bg-white hover:bg-[#333]  text-black hover:text-white text-center font-poppins text-base ">
+            <button className="w-auto px-8 py-3 rounded-full bg-white hover:bg-[#333] text-black hover:text-white text-center font-poppins text-base mb-2 sm:mb-0">
               <p className="font-poppins font-normal text-xl">Cybersecurity</p>
             </button>
           </div>
@@ -42,7 +42,7 @@ const TechContent = () => {
           <div className="flex items-center justify-center text-center mt-28">
             <div className="flex flex-col items-center justify-center rounded-tr-full rounded-bl-full w-full bg-white">
               <div className="flex flex-col p-2 m-2 max-w-7xl">
-                <p className="text-xl md:text-3xl font-medium font-poppins">
+                <p className="text-xl md:text-3xl text-black font-medium font-poppins">
                   Discover People
                 </p>
 
@@ -62,7 +62,7 @@ const TechContent = () => {
                     <p className=" font-poppins text-lg font-medium text-stone-600 cursor-pointer hover:text-stone-400">
                       Amit Patel
                     </p>
-                    <p className="text-left m-2 font-poppins">
+                    <p className="text-left text-black m-2 font-poppins">
                       Software Engineer specializing in web development with
                       expertise in React.js and Node.js.
                     </p>
@@ -82,7 +82,7 @@ const TechContent = () => {
                     <p className="text-lg font-medium text-stone-600 cursor-pointer hover:text-stone-400">
                       Priya Sharma
                     </p>
-                    <div className="text-left m-2">
+                    <div className="text-left m-2 text-black">
                       Data Scientist with a focus on machine learning algorithms
                       and predictive analytics.
                     </div>
@@ -102,7 +102,7 @@ const TechContent = () => {
                     <div className="text-lg font-medium text-stone-600 cursor-pointer hover:text-stone-400">
                       Rajesh Singh
                     </div>
-                    <div className="text-left m-2">
+                    <div className="text-left m-2 text-black">
                       Cybersecurity Analyst specializing in penetration testing
                       and threat detection.
                     </div>
@@ -122,7 +122,7 @@ const TechContent = () => {
                     <div className="text-lg font-medium text-stone-600 cursor-pointer hover:text-stone-400">
                       Sanjay Verma
                     </div>
-                    <div className="text-left m-2">
+                    <div className="text-left m-2 text-black">
                       Cloud Solutions Architect with extensive experience in
                       designing and implementing scalable cloud infrastructure
                       using AWS and Azure.

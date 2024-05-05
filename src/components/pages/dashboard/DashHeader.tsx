@@ -36,7 +36,9 @@ export default function DashHeader() {
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <Logo />
-          <p className="hidden sm:block font-bold text-inherit">ACME</p>
+          <p className="hidden text-black font-semibold font-poppins sm:block  ">
+            ACME
+          </p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3 ">
           <Input
@@ -112,17 +114,42 @@ export default function DashHeader() {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold text-black font-poppins">
+                Signed in as
+              </p>
+              <p className="font-semibold text-black font-poppins">
+                zoey@example.com
+              </p>
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="settings">
+              <p className="font-semibold text-black font-poppins">
+                My Settings
+              </p>
+            </DropdownItem>
+            <DropdownItem key="team_settings">
+              <p className="font-semibold text-black font-poppins">
+                Team Settings
+              </p>
+            </DropdownItem>
+            <DropdownItem key="analytics">
+              <p className="font-semibold text-black font-poppins">Analytics</p>
+            </DropdownItem>
+            <DropdownItem key="system">
+              <p className="font-semibold text-black font-poppins">System</p>
+            </DropdownItem>
+            <DropdownItem key="configurations">
+              <p className="font-semibold text-black font-poppins">
+                Configrations
+              </p>
+            </DropdownItem>
+            <DropdownItem key="help_and_feedback">
+              {" "}
+              <p className="font-semibold text-black font-poppins">
+                Help & Feedback{" "}
+              </p>
+            </DropdownItem>
             <DropdownItem key="logout" color="danger" onClick={handleLogout}>
-              Log Out
+              <p className="font-semibold text-black font-poppins">Log Out</p>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

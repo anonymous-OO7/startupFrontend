@@ -106,6 +106,7 @@ export default function SignUp() {
               label="Gender"
               placeholder="Gender"
               onSelect={handleGenderType}
+              className="text-black font-poppins font-normal"
             />
             <Spacer size="xs" />
 

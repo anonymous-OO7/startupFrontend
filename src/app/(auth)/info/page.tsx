@@ -16,7 +16,6 @@ export default function About() {
         style={{ background: gradients.gradientbackground }}
       >
         <Header />
-
         <div className="flex-grow">
           <FrontContent />
           <TechContent />

@@ -15,10 +15,6 @@ interface Props {
 }
 
 export default function Main({ children }: Props) {
-  // eslint-disable-line
-  // eslint-disable-line
-  // eslint-disable-line
-  // eslint-disable-line
   const [expandedMain, setExpandedMain] = React.useState(true);
 
   return (

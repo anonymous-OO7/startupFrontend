@@ -44,15 +44,15 @@ const PostBlock = ({ post }: PostCardProps) => {
             </Link>
 
             <div className="flex flex-col">
-              <p className="text-[16px] font-poppins font-medium leading-[140%] lg:body-bold text-light-1">
+              <p className="text-[16px] text-black font-poppins font-medium leading-[140%] lg:body-bold text-light-1">
                 {post.creator.name}
               </p>
               <div className="flex justify-center items-center gap-2 text-light-3">
-                <p className="text-[12px] font-semibold font-poppins leading-[140%] lg:text-[14px] lg:font-normal lg:leading-[140%] ">
+                <p className="text-[12px] text-black font-semibold font-poppins leading-[140%] lg:text-[14px] lg:font-normal lg:leading-[140%] ">
                   {multiFormatDateString(post.$createdAt)}
                 </p>
                 •
-                <p className="text-[12px] font-semibold font-poppins leading-[140%] lg:text-[14px] lg:font-normal lg:leading-[140%]">
+                <p className="text-[12px] text-black font-semibold font-poppins leading-[140%] lg:text-[14px] lg:font-normal lg:leading-[140%]">
                   {post.location}
                 </p>
               </div>
@@ -74,8 +74,10 @@ const PostBlock = ({ post }: PostCardProps) => {
 
         <Link href={`/posts/${post.$id}`}>
           <div className="text-[14px] font-poppins font-medium leading-[140%] lg:text-[16px] lg:font-medium lg:leading-[140%] py-5">
-            <p>{post.caption}</p>
-            <ul className="flex  text-sm font-poppins gap-1 mt-2">
+            <p className="text-black font-semibold font-poppins">
+              {post.caption}
+            </p>
+            <ul className="flex font-semibold font-poppins  text-sm font-poppins gap-1 mt-2">
               {/* {post.tags.map((tag: string, index: string) => (
               <li key={`${tag}${index}`} className="text-light-3 small-regular">
                 #{tag}

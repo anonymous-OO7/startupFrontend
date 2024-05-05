@@ -20,7 +20,7 @@ function Bottombar() {
             <Link
               href={link.route}
               key={link.label}
-              className={` relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5 ${isActive && "bg-primary-500"}`}
+              className={` relative flex text-black flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5 ${isActive && "bg-primary-500"}`}
             >
               {/* <Image
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMMbTeQ3avpXty_1plz1_iD07cPMGWQzX_Vg&usqp=CAU"
@@ -31,7 +31,7 @@ function Bottombar() {
               /> */}
               {link.logocmp}
 
-              <p className="text-subtle-medium text-light-1 max-sm:hidden">
+              <p className="text-subtle-medium text-black text-light-1 max-sm:hidden">
                 {link.label.split(/\s+/)[0]}
               </p>
             </Link>

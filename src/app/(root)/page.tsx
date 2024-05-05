@@ -21,7 +21,7 @@ const Home: React.FC = () => {
             </Link>
           </div> */}
 
-          <h1 className="text-2xl font-semibold mb-4 font-poppins">
+          <h1 className="text-2xl text-black font-semibold mb-4 font-poppins">
             Whats happening
           </h1>
         </div>
