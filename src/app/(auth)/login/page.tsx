@@ -27,6 +27,14 @@ const LoginPage = () => {
   const { makeApiCall } = useApi();
   const { showToast } = useToast();
 
+  const navigateToSignup = React.useCallback(() => {
+    router.push(`/signup`);
+  }, [router]);
+
+  const navigateToHomePage = React.useCallback(() => {
+    router.replace("/");
+  }, [router]);
+
   const handleSubmit = React.useCallback(
     ({ email }: typeof INTIAL_VALUES) => {
       setLoading(true);
@@ -46,7 +54,7 @@ const LoginPage = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall],
+    [makeApiCall, showToast],
   );
 
   const otpSubmit = React.useCallback(
@@ -76,16 +84,8 @@ const LoginPage = () => {
         })
         .finally(() => setOtpLoading(false));
     },
-    [makeApiCall, otp, email],
+    [makeApiCall, otp, email, navigateToHomePage, navigateToSignup, showToast],
   );
-
-  const navigateToSignup = React.useCallback(() => {
-    router.push(`/signup`);
-  }, [router]);
-
-  const navigateToHomePage = React.useCallback(() => {
-    router.replace("/");
-  }, [router]);
 
   const onOtpChange = (text: string) => {
     console.log(text, "OTPPP");
