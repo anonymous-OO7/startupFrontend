@@ -84,7 +84,7 @@ const LoginPage = () => {
         })
         .finally(() => setOtpLoading(false));
     },
-    [makeApiCall, otp, email, navigateToHomePage, navigateToSignup, showToast],
+    [makeApiCall, navigateToHomePage, navigateToSignup, showToast],
   );
 
   const onOtpChange = (text: string) => {
