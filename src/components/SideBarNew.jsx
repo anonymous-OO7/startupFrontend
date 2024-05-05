@@ -63,7 +63,6 @@ export default function Sidebar({ children, setExpandedMain }) {
                 <p> {name != "" ? name : ""}</p>
                 <span className="text-xs text-gray-600">
                   <p className="text-black font-poppins font-normal text-sm">
-                    {" "}
                     {email != "" ? email : ""}
                   </p>
                 </span>

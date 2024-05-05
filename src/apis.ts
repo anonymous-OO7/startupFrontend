@@ -64,10 +64,16 @@ export const UserPostApi = (
   return onePiece.post("/api/posts/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },
   });
 };
 
 export const GetAllUserData = () => {
-  return onePiece.post("/user", {}, {});
+  return onePiece.get("/user", {
+    headers: {
+      "Content-Type": "text/plain",
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+    },
+  });
 };
