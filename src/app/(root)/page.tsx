@@ -1,9 +1,9 @@
 "use client";
 
-import { GetAllUserData } from "@/apis";
+import { GetAllPosts, GetAllUserData } from "@/apis";
 // pages/dashboard.tsx
 import PostBlock from "@/components/pages/home/PostBlock";
-import { posts } from "@/constants";
+// import { posts } from "@/constants";
 import useApi from "@/hooks/useApi";
 import useTokenCheck from "@/hooks/useTokenCheck";
 import React, { useEffect } from "react";
@@ -12,6 +12,7 @@ const Home: React.FC = () => {
   useTokenCheck();
   const { makeApiCall } = useApi();
   const [loading, setLoading] = React.useState(false); // eslint-disable-line
+  const [posts, setPosts] = React.useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -23,6 +24,22 @@ const Home: React.FC = () => {
         }
       })
       .catch((error) => console.error(error, "error in fetching user"))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [makeApiCall]);
+
+  //fetch all posts
+  useEffect(() => {
+    setLoading(true);
+    makeApiCall(GetAllPosts())
+      .then((response) => {
+        if (response !== undefined) {
+          console.log("ALL USER posts", response);
+          setPosts(response); // Assuming response.data contains the array of posts
+        }
+      })
+      .catch((error) => console.error(error, "error in fetching user posts"))
       .finally(() => {
         setLoading(false);
       });
@@ -46,9 +63,8 @@ const Home: React.FC = () => {
         </div>
 
         <div className="">
-          {posts.map((post) => (
-            <PostBlock key={post.$id} post={post} />
-          ))}
+          {/* eslint-disable-next-line */}
+          {posts?.map((post: any) => <PostBlock key={post?.id} post={post} />)}
         </div>
       </div>
     </div>

@@ -77,3 +77,12 @@ export const GetAllUserData = () => {
     },
   });
 };
+
+export const GetAllPosts = () => {
+  return onePiece.get("/api/posts/", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+    },
+  });
+};
