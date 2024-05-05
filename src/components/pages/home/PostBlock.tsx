@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { multiFormatDateString } from "@/lib/utils";
 import PostStats from "@/components/shared/PostStats";
+import Image from "next/image";
 
 type PostBlockProps = {
   post: {
@@ -54,11 +55,11 @@ const PostBlock = ({ post }: PostBlockProps) => {
             href={`/update-post/${post.id}`}
             className={`${user.id !== post.user.id && "hidden"}`}
           >
-            <img
-              src="/assets/icons/edit.svg"
-              alt="edit"
+            <Image
               width={20}
               height={20}
+              src="/assets/icons/edit.svg"
+              alt="edit"
             />
           </Link>
         </div>
@@ -80,10 +81,17 @@ const PostBlock = ({ post }: PostBlockProps) => {
             </ul>
           </div>
 
-          <img
+          {/* <img
             src={post.mediaUrl}
             alt="post image"
             className="h-64 xs:h-[350px] lg:h-[400px] w-full rounded-[24px] object-cover mb-5"
+          /> */}
+          <Image
+            width={100}
+            height={100}
+            className="h-64 xs:h-[350px] lg:h-[400px] w-full rounded-[24px] object-cover mb-5"
+            src={post.mediaUrl}
+            alt="File"
           />
         </Link>
 
