@@ -17,14 +17,17 @@ import {
   Button,
 } from "@nextui-org/react";
 import { Logo } from "../../../assets/Logo";
-import { SearchIcon } from "../../../assets/Search";
 import { Add } from "@/assets/Add";
 import Image from "next/image";
 import BellIcon from "../../../assets/bell.svg";
 import { useRouter } from "next/navigation";
+import { nextLocalStorage } from "@/utils/nextLocalStorage";
+import { Search } from "lucide-react";
 
 export default function DashHeader() {
   const router = useRouter();
+
+  const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
 
   const handleLogout = React.useCallback(() => {
     localStorage.clear();
@@ -37,33 +40,23 @@ export default function DashHeader() {
         <NavbarBrand className="mr-4">
           <Logo />
           <p className="hidden text-black font-semibold font-poppins sm:block  ">
-            ACME
+            {userData?.college != "" ? userData?.college : "---"}
           </p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-3 ">
+        <NavbarContent className="hidden sm:flex gap-3">
           <Input
             classNames={{
-              base: "max-w-full sm:max-w-[10rem] h-10",
+              base: "max-w-full sm:max-w-[20rem] h-10 rounded-lg",
               mainWrapper: "h-full",
               input: "text-small",
               inputWrapper:
                 "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
             }}
-            placeholder="Type to search..."
+            placeholder="Search here..."
             size="sm"
-            startContent={<SearchIcon />}
+            startContent={<Search />}
             type="search"
           />
-          {/* <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="secondary">
-              Customers
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
-            </Link>
-          </NavbarItem> */}
         </NavbarContent>
       </NavbarContent>
 
@@ -84,7 +77,11 @@ export default function DashHeader() {
         <NavbarItem>
           <div className="w-[50%]">
             <Link href="/submit">
-              <Button color="primary" endContent={<Add />}>
+              <Button
+                className="bg-sky-300 shadow-md text-black rounded-md font-poppins font-normal"
+                color="primary"
+                endContent={<Add />}
+              >
                 Create Post
               </Button>
             </Link>
@@ -109,7 +106,7 @@ export default function DashHeader() {
               color="secondary"
               name="Jason Hughes"
               size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              src="https://cdn1.vectorstock.com/i/1000x1000/77/10/men-faceless-profile-vector-13567710.jpg"
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
@@ -118,34 +115,13 @@ export default function DashHeader() {
                 Signed in as
               </p>
               <p className="font-semibold text-black font-poppins">
-                zoey@example.com
+                {userData?.name != "" ? userData?.name : "---"}
               </p>
             </DropdownItem>
-            <DropdownItem key="settings">
-              <p className="font-semibold text-black font-poppins">
-                My Settings
-              </p>
-            </DropdownItem>
-            <DropdownItem key="team_settings">
-              <p className="font-semibold text-black font-poppins">
-                Team Settings
-              </p>
-            </DropdownItem>
-            <DropdownItem key="analytics">
-              <p className="font-semibold text-black font-poppins">Analytics</p>
-            </DropdownItem>
-            <DropdownItem key="system">
-              <p className="font-semibold text-black font-poppins">System</p>
-            </DropdownItem>
-            <DropdownItem key="configurations">
-              <p className="font-semibold text-black font-poppins">
-                Configrations
-              </p>
-            </DropdownItem>
+
             <DropdownItem key="help_and_feedback">
-              {" "}
               <p className="font-semibold text-black font-poppins">
-                Help & Feedback{" "}
+                Help & Feedback
               </p>
             </DropdownItem>
             <DropdownItem key="logout" color="danger" onClick={handleLogout}>

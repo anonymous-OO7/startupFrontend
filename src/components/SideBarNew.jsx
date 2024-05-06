@@ -8,8 +8,9 @@ const SidebarContext = createContext();
 
 export default function Sidebar({ children, setExpandedMain }) {
   const [expanded, setExpanded] = useState(true);
-  const name = nextLocalStorage()?.getItem("name") ?? "name";
+  // const name = nextLocalStorage()?.getItem("name") ?? "name";
   const email = nextLocalStorage()?.getItem("email") ?? "";
+  const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
   return (
     <div>
       {/* Sidebar for large devices */}
@@ -60,7 +61,7 @@ export default function Sidebar({ children, setExpandedMain }) {
               `}
             >
               <div className="leading-4 text-black">
-                <p> {name != "" ? name : ""}</p>
+                <p> {userData?.name != "" ? userData?.name : ""}</p>
                 <span className="text-xs text-gray-600">
                   <p className="text-black font-poppins font-normal text-sm">
                     {email != "" ? email : ""}

@@ -13,6 +13,8 @@ import useApi from "@/hooks/useApi";
 import { nextLocalStorage } from "@/utils/nextLocalStorage";
 import { CreateUserApi } from "@/apis";
 import useToast from "@/hooks/useToast";
+import { collegdata } from "@/constants";
+import SearchableDropdown from "@/components/common/SelectSearchNew";
 
 const Gender: SelectType[] = [
   {
@@ -44,6 +46,7 @@ export default function SignUp() {
   const emailocal = nextLocalStorage()?.getItem("email");
   const { makeApiCall } = useApi();
   const { showToast } = useToast();
+  const [value, setValue] = React.useState("Select option...");
 
   React.useEffect(() => {
     if (emailocal && emailocal == "") {
@@ -188,6 +191,13 @@ export default function SignUp() {
               name="institution_name"
             />
             <Spacer size="xs" />
+            <SearchableDropdown
+              options={collegdata}
+              label="name"
+              id="id"
+              selectedVal={value}
+              handleChange={(val: any) => setValue(val)} // eslint-disable-line
+            />
             <Input
               label="Title/Field"
               placeholder="Title/Field"

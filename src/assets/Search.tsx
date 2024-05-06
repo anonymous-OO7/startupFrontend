@@ -7,7 +7,7 @@ interface Props extends React.SVGProps<SVGSVGElement> {
 
 export const SearchIcon = () => (
   <svg
-    className="w-3 h-3 text-white"
+    className="w-3 h-3 text-black"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"

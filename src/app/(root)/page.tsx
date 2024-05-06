@@ -20,7 +20,7 @@ const Home: React.FC = () => {
       .then((response) => {
         if (response !== undefined) {
           console.log("ALL USER DATA FETCHED", response);
-          localStorage.setItem("name", response?.name);
+          localStorage.setItem("user_data", JSON.stringify(response));
         }
       })
       .catch((error) => console.error(error, "error in fetching user"))

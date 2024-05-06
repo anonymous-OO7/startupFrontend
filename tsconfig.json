@@ -28,6 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/SideBarNew.jsx",
+    "src/components/common/SelectSearchNew.js",
   ],
   "exclude": ["node_modules"],
 }
