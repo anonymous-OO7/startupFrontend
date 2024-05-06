@@ -24,15 +24,42 @@ import { useRouter } from "next/navigation";
 import { nextLocalStorage } from "@/utils/nextLocalStorage";
 import { Search } from "lucide-react";
 
+interface UserData {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  college: string;
+  company: string;
+  phoneNo: string;
+  gender: string;
+  course: string;
+  createdAt: string; // Assuming createdAt is always a string in ISO 8601 format
+}
+
 export default function DashHeader() {
   const router = useRouter();
 
-  const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
+  // const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
 
   const handleLogout = React.useCallback(() => {
     localStorage.clear();
     router.replace("/info");
   }, [router]);
+
+  const [data, setData] = React.useState<UserData>();
+
+  React.useEffect(() => {
+    const storedData = nextLocalStorage()?.getItem("user_data");
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+        setData(parsedData);
+      } catch (error) {
+        console.log("USER DATA NOT PARSED");
+      }
+    }
+  }, []);
 
   return (
     <Navbar isBordered className=" ">
@@ -40,7 +67,7 @@ export default function DashHeader() {
         <NavbarBrand className="mr-4">
           <Logo />
           <p className="hidden text-black font-semibold font-poppins sm:block  ">
-            {userData?.college != "" ? userData?.college : "---"}
+            {data?.college != "" ? data?.college : "---"}
           </p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
@@ -115,7 +142,7 @@ export default function DashHeader() {
                 Signed in as
               </p>
               <p className="font-semibold text-black font-poppins">
-                {userData?.name != "" ? userData?.name : "---"}
+                {data?.name != "" ? data?.name : "---"}
               </p>
             </DropdownItem>
 

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
 import Link from "next/link";
@@ -10,7 +11,20 @@ export default function Sidebar({ children, setExpandedMain }) {
   const [expanded, setExpanded] = useState(true);
   // const name = nextLocalStorage()?.getItem("name") ?? "name";
   const email = nextLocalStorage()?.getItem("email") ?? "";
-  const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
+
+  const [data, setData] = React.useState();
+
+  React.useEffect(() => {
+    const storedData = nextLocalStorage()?.getItem("user_data");
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+        setData(parsedData);
+      } catch (error) {
+        console.log("USER DATA NOT PARSED");
+      }
+    }
+  }, []);
   return (
     <div>
       {/* Sidebar for large devices */}
@@ -61,7 +75,7 @@ export default function Sidebar({ children, setExpandedMain }) {
               `}
             >
               <div className="leading-4 text-black">
-                <p> {userData?.name != "" ? userData?.name : ""}</p>
+                <p> {data?.name != "" ? data?.name : ""}</p>
                 <span className="text-xs text-gray-600">
                   <p className="text-black font-poppins font-normal text-sm">
                     {email != "" ? email : ""}

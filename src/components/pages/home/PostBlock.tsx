@@ -69,7 +69,7 @@ const PostBlock = ({ post }: PostBlockProps) => {
             <p className="text-black font-semibold font-poppins">
               {post.title}
             </p>
-            <ul className="flex font-semibold font-poppins  text-sm font-poppins gap-1 mt-2">
+            <ul className="flex font-semibold  text-sm font-poppins gap-1 mt-2">
               {post.tags.split(",").map((tag, index) => (
                 <li
                   key={`${tag}${index}`}
