@@ -15,6 +15,27 @@ export type StoreType = {
   setUser: (user: User) => void;
 };
 
+//posttype
+export type PostBlockProps = {
+  post: {
+    createdDate: string;
+    id: number;
+    mediaType: string;
+    mediaUrl: string;
+    tags: string;
+    text: string;
+    title: string;
+    user: {
+      id: number;
+      name: string;
+      username: string;
+      email: string;
+      college: string;
+    };
+    votes: number;
+  };
+};
+
 export type DeviceInfoType = {
   ADP: string;
   AgentName: string;

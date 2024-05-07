@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { checkIsLiked } from "@/lib/utils";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Save from "../../assets/icons/save.svg";
 import Saved from "../../assets/icons/saved.svg";
@@ -8,10 +8,18 @@ import Upvote from "../../assets/icons/upvote.svg";
 import ToUpvote from "../../assets/icons/toupvote.svg";
 import Comment from "../../assets/reply.svg";
 import ThreadCard from "../cards/ThreadCard";
+import { PostBlockProps } from "@/types";
 
-const PostStats = ({ userId = "NA" }) => {
-  // const likesList = post.likes.map((user: Models.Document) => user.$id);
-  // Dummy API response
+interface Props {
+  post: PostBlockProps;
+}
+
+const PostStats = ({ post }: Props) => {
+  const [currentPost, setCurrentPost] = useState<PostBlockProps>(post);
+  const [isSaved, setIsSaved] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [userLiked, setUserLiked] = useState(false); // Tracks whether the user has liked the post
+
   const result = {
     posts: [
       {
@@ -50,51 +58,56 @@ const PostStats = ({ userId = "NA" }) => {
     ],
   };
 
-  const [likes, setLikes] = useState<string[]>(["like1"]);
-  const [isSaved, setIsSaved] = useState(false);
-  const [showComments, setShowComments] = useState(false);
-
-  const handleLikePost = (
-    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
-  ) => {
-    e.stopPropagation();
-
-    let likesArray = [...likes];
-
-    if (likesArray.includes(userId)) {
-      likesArray = likesArray.filter((Id) => Id !== userId);
-    } else {
-      likesArray.push(userId);
-    }
-
-    setLikes(likesArray);
-  };
+  useEffect(() => {
+    setCurrentPost(post);
+  }, [post]);
 
   const handleSavePost = () => {
     setIsSaved(!isSaved);
   };
 
+  const handleLikePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    like: boolean,
+  ) => {
+    e.stopPropagation();
+
+    const updatedPost = { ...currentPost.post };
+
+    if (like && !userLiked) {
+      // User is liking the post
+      updatedPost.votes += 1;
+      setUserLiked(true); // Set that the user has liked the post
+    } else if (!like && userLiked) {
+      // User is unliking the post
+      updatedPost.votes -= 1;
+      setUserLiked(false); // Set that the user no longer likes the post
+    }
+
+    setCurrentPost({ post: updatedPost });
+  };
+
   return (
     <div>
-      <div className={`flex justify-between items-center z-20 w-full `}>
-        <div className="flex gap-2 mr-5 ">
+      <div className={`flex justify-between items-center z-20 w-full`}>
+        <div className="flex gap-2 mr-5 bg-gray-200 shadow p-1 rounded-full">
           <Image
-            src={checkIsLiked(likes, userId) ? Upvote : ToUpvote}
+            src={userLiked ? Upvote : ToUpvote}
             alt="like"
             width={20}
             height={20}
-            onClick={(e) => handleLikePost(e)}
+            onClick={(e) => handleLikePost(e, true)}
             className="cursor-pointer"
           />
           <p className="font-poppins font-light text-black small-medium lg:base-medium">
-            {likes.length}
+            {currentPost.post.votes}
           </p>
           <Image
-            src={checkIsLiked(likes, userId) ? ToUpvote : Upvote}
-            alt="like"
+            src={userLiked ? ToUpvote : Upvote}
+            alt="unlike"
             width={20}
             height={20}
-            onClick={(e) => handleLikePost(e)}
+            onClick={(e) => handleLikePost(e, false)}
             className="cursor-pointer transform rotate-180"
           />
           <div className="flex gap-4 ml-5">
@@ -104,47 +117,39 @@ const PostStats = ({ userId = "NA" }) => {
               width={25}
               height={25}
               className="cursor-pointer"
-              onClick={() => {
-                setShowComments(!showComments);
-              }}
+              onClick={() => setShowComments(!showComments)}
             />
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 shadow bg-slate-100 p-2 rounded-full">
           <Image
             src={isSaved ? Saved : Save}
-            alt="share"
+            alt="save"
             width={20}
             height={20}
             className="cursor-pointer"
-            onClick={() => handleSavePost()}
+            onClick={handleSavePost}
           />
         </div>
       </div>
-      {showComments ? (
-        <section className=" mt-9 flex flex-col gap-10">
-          {result.posts.length === 0 ? (
-            <p className="no-result">No threads found</p>
-          ) : (
-            <>
-              {result.posts.map((post) => (
-                <ThreadCard
-                  key={post._id}
-                  id={post._id}
-                  currentUserId={"abc"}
-                  parentId={post.parentId}
-                  content={post.text}
-                  author={post.author}
-                  community={post.community}
-                  createdAt={post.createdAt}
-                  comments={post.children}
-                />
-              ))}
-            </>
-          )}
+      {showComments && (
+        <section className="mt-9 flex flex-col gap-10">
+          {result.posts.map((post) => (
+            <ThreadCard
+              key={post._id}
+              id={post._id}
+              currentUserId={"abc"}
+              parentId={post.parentId}
+              content={post.text}
+              author={post.author}
+              community={post.community}
+              createdAt={post.createdAt}
+              comments={post.children}
+            />
+          ))}
         </section>
-      ) : null}
+      )}
     </div>
   );
 };

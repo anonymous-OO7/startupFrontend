@@ -2,26 +2,7 @@ import Link from "next/link";
 import { multiFormatDateString } from "@/lib/utils";
 import PostStats from "@/components/shared/PostStats";
 import Image from "next/image";
-
-type PostBlockProps = {
-  post: {
-    createdDate: string;
-    id: number;
-    mediaType: string;
-    mediaUrl: string;
-    tags: string;
-    text: string;
-    title: string;
-    user: {
-      id: number;
-      name: string;
-      username: string;
-      email: string;
-      college: string;
-    };
-    votes: number;
-  };
-};
+import { PostBlockProps } from "@/types";
 
 const PostBlock = ({ post }: PostBlockProps) => {
   const user = { id: 1 }; // Assuming user ID is stored somewhere
@@ -95,7 +76,7 @@ const PostBlock = ({ post }: PostBlockProps) => {
           />
         </Link>
 
-        <PostStats />
+        <PostStats post={{ post: post }} />
       </div>
     </div>
   );
