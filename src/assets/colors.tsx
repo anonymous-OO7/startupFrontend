@@ -1,6 +1,6 @@
 // commonColor.tsx
 
-export const colors = {
+export const Colors = {
   primary: "#F9EB98",
   secondary: "#6c757d",
   success: "#28a745",

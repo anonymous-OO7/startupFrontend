@@ -64,9 +64,9 @@ export default function Sidebar({ children, setExpandedMain }) {
 
           <div className="border-t flex p-3">
             <img // eslint-disable-line
-              src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
+              src="https://cdn1.vectorstock.com/i/1000x1000/77/10/men-faceless-profile-vector-13567710.jpg"
               alt=""
-              className="w-10 h-10 rounded-md"
+              className="w-6 h-6 rounded-md"
             />
             <div
               className={`
@@ -77,12 +77,12 @@ export default function Sidebar({ children, setExpandedMain }) {
               <div className="leading-4 text-black">
                 <p> {data?.name != "" ? data?.name : ""}</p>
                 <span className="text-xs text-gray-600">
-                  <p className="text-black font-poppins font-normal text-sm">
+                  <p className="text-black font-poppins font-light text-xs">
                     {email != "" ? email : ""}
                   </p>
                 </span>
               </div>
-              <MoreVertical size={20} />
+              <MoreVertical size={14} color="#000" />
             </div>
           </div>
         </nav>
@@ -99,12 +99,12 @@ export function SidebarItem({ icon, text, active, alert, href }) {
       <li
         className={`
         relative flex items-center py-2 px-3 my-1
-        font-medium rounded-md cursor-pointer
+        font-medium  rounded-md cursor-pointer
         transition-colors group
         ${
           active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : "hover:bg-indigo-50 text-gray-600"
+            ? "bg-gradient-to-tr from-slate-200 to-slate-200 text-black"
+            : "hover:bg-stone-200 text-gray-600"
         }
       `}
       >

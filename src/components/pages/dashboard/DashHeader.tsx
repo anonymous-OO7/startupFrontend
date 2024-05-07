@@ -66,7 +66,7 @@ export default function DashHeader() {
       <NavbarContent justify="start">
         <NavbarBrand className="mr-4">
           <Logo />
-          <p className="hidden text-black font-semibold font-poppins sm:block  ">
+          <p className=" text-black font-semibold font-poppins sm:block  ">
             {data?.college != "" ? data?.college : "---"}
           </p>
         </NavbarBrand>
@@ -105,7 +105,7 @@ export default function DashHeader() {
           <div className="w-[50%]">
             <Link href="/submit">
               <Button
-                className="bg-sky-300 shadow-md text-black rounded-md font-poppins font-normal"
+                className="bg-stone-200 hover:bg-stone-300 p-2 shadow-md text-black rounded-md font-poppins font-normal"
                 color="primary"
                 endContent={<Add />}
               >
@@ -120,8 +120,9 @@ export default function DashHeader() {
           color="warning"
           variant="faded"
           aria-label="Take a photo"
+          className="h-8"
         >
-          <Image src={BellIcon} alt="File" />
+          <Image height={18} src={BellIcon} alt="File" />
         </Button>
 
         <Dropdown placement="bottom-end">
