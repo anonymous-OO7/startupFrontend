@@ -7,7 +7,7 @@ const Founders = () => (
       style={{ offsetPosition: "normal" }}
       className="text-zinc-800 px-4 m-auto"
     >
-      <h1 className="text-black text-4xl font-extrabold text-center mt-20">
+      <h1 className="text-black text-4xl font-bold text-center mt-20">
         Management Team
       </h1>
 
@@ -16,25 +16,26 @@ const Founders = () => (
           <div className="  p-5 lg:w-[30vw] rounded-lg shadow-md  ">
             <div className="flex justify-center">
               <Image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIOXvW4lrYo-jhQjiDc0dPns-T5TpNmIg-CPW6jm-ZqA&s"
+                src="https://mohitrai.com/mohit-rai.jpg"
                 width={80} // Set the width as needed
                 height={80} // Set the height as needed
                 className="rounded-full"
-                alt="Ankush Bhan"
+                alt="Mohit Rai"
               />
             </div>
             <div className="text-center mt-4 ">
               <h2 className="text-black text-lg font-semibold font-poppins">
-                Mohit
+                Mohit Rai - Software Developer at Google
               </h2>
-              <h3 className="text-black text-base pb-3 font-poppins">
+              {/* <h3 className="text-black text-base pb-3 font-poppins">
                 Founder & Director
-              </h3>
+              </h3> */}
               <p className="text-black text-sm text-justify font-poppins">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempore repudiandae sed, cumque excepturi molestias consequatur
-                incidunt rem amet doloremque minima qui vitae quibusdam
-                doloribus deserunt, enim laborum est blanditiis ipsum.
+                Mohit Rai brings a robust three-year tenure at Google, where he
+                specializes in developing scalable applications that reach
+                millions worldwide. His expertise spans sophisticated algorithm
+                design and building efficient, user-centric solutions that
+                enhance digital interactions.
               </p>
             </div>
           </div>
@@ -44,28 +45,26 @@ const Founders = () => (
           <div className=" p-5 lg:w-[30vw]  rounded-lg shadow-md">
             <div className="flex justify-center">
               <Image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIOXvW4lrYo-jhQjiDc0dPns-T5TpNmIg-CPW6jm-ZqA&s"
+                src="https://media.licdn.com/dms/image/C4D03AQGLbwd9j1oSRQ/profile-displayphoto-shrink_100_100/0/1650774597752?e=1720656000&v=beta&t=bcci7PYpi5f6_UQg__oAdFlMrpPOwdRxWjJQl_XJTJM"
                 width={80} // Set the width as needed
                 height={80} // Set the height as needed
                 className="rounded-full"
-                alt="Ankush Bhan"
+                alt="gaurav"
               />
             </div>
             <div className="text-center mt-4">
               <h2 className="text-black text-lg font-semibold font-poppins">
-                Gaurav
+                Gaurav Yadav - Full Stack Developer at CRPL
               </h2>
-              <h3 className="text-black text-base pb-3 font-poppins">
+              {/* <h3 className="text-black text-base pb-3 font-poppins">
                 Founder & Director
-              </h3>
+              </h3> */}
               <p className="text-black text-sm text-justify font-poppins">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Aspernatur, architecto iusto odit id eius omnis doloremque
-                eaque, sit excepturi iure provident dignissimos quidem mollitia
-                et nisi dolor obcaecati quia fugiat placeat rem accusamus
-                molestias temporibus. Quas labore, a id repudiandae, voluptatum
-                doloribus, iure provident architecto eligendi quia
-                exercitationem et cupiditate!
+                With three years of experience as a Full Stack Developer at
+                CRPL, Gaurav Yadav excels in delivering comprehensive
+                development solutions. Gaurav’s skill set covers everything from
+                frontend to backend development, ensuring seamless integration
+                and functionality that drives business success.
               </p>
             </div>
           </div>

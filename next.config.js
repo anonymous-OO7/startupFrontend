@@ -5,7 +5,13 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ["encrypted-tbn0.gstatic.com", "3.68.94.171", "3.79.194.15"],
+    domains: [
+      "encrypted-tbn0.gstatic.com",
+      "3.68.94.171",
+      "3.79.194.15",
+      "mohitrai.com",
+      "media.licdn.com",
+    ],
   },
   experimental: {
     serverActions: true,

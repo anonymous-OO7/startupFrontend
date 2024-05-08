@@ -1,5 +1,72 @@
 import { Home, Search, CircleUserIcon, BadgeInfo, Wrench } from "lucide-react";
 
+export const teamMembers = [
+  {
+    imageUrl: "https://source.unsplash.com/300x300/?businessman",
+    role: "Lead Designer",
+    name: "Amit Patel",
+    description:
+      "Lead Designer with a strong focus on user experience and a knack for creating compelling visual designs and interfaces.",
+  },
+  {
+    imageUrl: "https://source.unsplash.com/300x300/?developer",
+    role: "Software Engineer",
+    name: "Neha Singh",
+    description:
+      "Front-end Software Engineer specializing in React.js and modern web technologies, with a passion for building accessible, user-friendly websites.",
+  },
+  {
+    imageUrl: "https://source.unsplash.com/300x300/?programmer",
+    role: "Backend Developer",
+    name: "Rajesh Kumar",
+    description:
+      "Backend Developer with expertise in Node.js and database management, focused on crafting efficient and scalable server-side applications.",
+  },
+  {
+    imageUrl: "https://source.unsplash.com/300x300/?it-professional",
+    role: "Project Manager",
+    name: "Sunita Rao",
+    description:
+      "Experienced Project Manager proficient in overseeing various software development projects, ensuring timely delivery and exceptional quality.",
+  },
+];
+
+export const techList = [
+  {
+    id: 1,
+    avatarUrl: "https://i.pravatar.cc/150?u=a042581f4e29026701",
+    fullName: "Zoey Lang",
+    username: "zoeylang",
+    bio: "Frontend developer and UI/UX enthusiast. Join me on this coding adventure!",
+    hashtags: "#FrontendWithZoey",
+    emoji: "💻",
+    followingCount: 4,
+    followersCount: "97.1K",
+  },
+  {
+    id: 2,
+    avatarUrl: "https://i.pravatar.cc/150?u=a042581f4e29026702",
+    fullName: "John Doe",
+    username: "johnnyd",
+    bio: "Backend Master and Cloud Infrastructure Expert.",
+    hashtags: "#BackendBeast",
+    emoji: "🖥️",
+    followingCount: 15,
+    followersCount: "150K",
+  },
+  {
+    id: 3,
+    avatarUrl: "https://i.pravatar.cc/150?u=a042581f4e29026703",
+    fullName: "Emma Smith",
+    username: "emmasmith",
+    bio: "Digital Marketer & Content Creator.",
+    hashtags: "#MarketingWizard",
+    emoji: "🌟",
+    followingCount: 23,
+    followersCount: "85.2K",
+  },
+];
+
 export const sidebarLinks = [
   {
     imgURL: "/assets/home.svg",
