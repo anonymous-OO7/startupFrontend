@@ -6,7 +6,6 @@ import { PostBlockProps } from "@/types";
 
 const PostBlock = ({ post }: PostBlockProps) => {
   const user = { id: 1 }; // Assuming user ID is stored somewhere
-
   return (
     <div className="flex justify-center mb-5">
       <div className="bg-dark-2 rounded-3xl border border-dark-4 p-5 lg:p-7 w-full max-w-screen-sm bg-neutral-50">
@@ -71,7 +70,10 @@ const PostBlock = ({ post }: PostBlockProps) => {
             width={100}
             height={100}
             className="h-64 xs:h-[350px] lg:h-[400px] w-full rounded-[24px] object-cover mb-5"
-            src={post.mediaUrl}
+            // src={post.mediaUrl}
+            src={
+              "https://kinsta.com/wp-content/uploads/2019/08/jpg-vs-jpeg.jpg"
+            }
             alt="File"
           />
         </Link>

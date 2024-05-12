@@ -11,6 +11,8 @@ module.exports = {
       "3.79.194.15",
       "mohitrai.com",
       "media.licdn.com",
+      "localhost",
+      "kinsta.com",
     ],
   },
   experimental: {

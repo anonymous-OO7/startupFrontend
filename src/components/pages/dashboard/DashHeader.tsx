@@ -36,8 +36,10 @@ interface UserData {
   course: string;
   createdAt: string; // Assuming createdAt is always a string in ISO 8601 format
 }
-
-export default function DashHeader() {
+interface DashHeaderProps {
+  onOpen: () => void;
+}
+export default function DashHeader({ onOpen }: DashHeaderProps) {
   const router = useRouter();
 
   // const userData = JSON.parse(nextLocalStorage()?.getItem("user_data") ?? "");
@@ -46,6 +48,11 @@ export default function DashHeader() {
     localStorage.clear();
     router.replace("/info");
   }, [router]);
+
+  const handleUpdateProfile = React.useCallback(() => {
+    // router.replace("/updateprofile");
+    onOpen();
+  }, [router, onOpen]);
 
   const [data, setData] = React.useState<UserData>();
 
@@ -144,6 +151,15 @@ export default function DashHeader() {
               </p>
               <p className="font-semibold text-black font-poppins">
                 {data?.name != "" ? data?.name : "---"}
+              </p>
+            </DropdownItem>
+
+            <DropdownItem key="help_and_feedback">
+              <p
+                onClick={handleUpdateProfile}
+                className="font-semibold text-black font-poppins"
+              >
+                Update Profile
               </p>
             </DropdownItem>
 

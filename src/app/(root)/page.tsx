@@ -7,7 +7,7 @@ import PostBlock from "@/components/pages/home/PostBlock";
 import useApi from "@/hooks/useApi";
 import useTokenCheck from "@/hooks/useTokenCheck";
 import React, { useEffect } from "react";
-
+import CreatePost from "@/components/pages/home/CreatePost";
 const Home: React.FC = () => {
   useTokenCheck();
   const { makeApiCall } = useApi();
@@ -56,11 +56,8 @@ const Home: React.FC = () => {
               </button>
             </Link>
           </div> */}
-
-          <h1 className="text-2xl text-black font-semibold mb-4 font-poppins">
-            Whats happening
-          </h1>
         </div>
+        <CreatePost />
 
         <div className="">
           {/* eslint-disable-next-line */}
