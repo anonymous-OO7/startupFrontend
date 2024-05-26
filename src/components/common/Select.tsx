@@ -1,12 +1,22 @@
-import { Select as NSelect, SelectItem, SelectProps } from "@nextui-org/react";
+import {
+  Select as NSelect,
+  SelectItem,
+  SelectProps,
+  SelectionMode,
+} from "@nextui-org/react";
 import { useField } from "formik";
 import * as React from "react";
-import { SelectType } from "../../types";
+import { SelectType } from "@/types";
 
-interface Props extends Omit<SelectProps, "items" | "children" | "onSelect"> {
+interface Props
+  extends Omit<
+    SelectProps,
+    "items" | "children" | "onSelect" | "selectionMode"
+  > {
   item: SelectType[];
   name: string;
   onSelect?: (value: string) => void;
+  selectionMode?: SelectionMode;
 }
 
 export default function Select({
@@ -19,6 +29,7 @@ export default function Select({
   size,
   labelPlacement = "outside",
   onSelect,
+  selectionMode = "single",
   ...props
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,10 +54,15 @@ export default function Select({
       labelPlacement={labelPlacement}
       errorMessage={meta.touched && meta.error !== undefined && meta.error}
       isInvalid={meta.touched && meta.error !== undefined ? true : false}
+      selectionMode={selectionMode}
       {...props}
     >
       {item?.map(({ label, value }) => (
-        <SelectItem key={value} value={value}>
+        <SelectItem
+          className="text-base text-black font-poppins"
+          key={value}
+          value={value}
+        >
           {label}
         </SelectItem>
       ))}

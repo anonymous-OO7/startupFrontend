@@ -43,9 +43,36 @@ export interface UserProfile {
   gender: string;
   id: number;
   name: string;
-  phoneNo: string;
+  phone_no: string;
   username: string;
   uuid: string;
+  image: string | ArrayBuffer | null;
+  country: string;
+  bio: string;
+  expertise: string[]; // Array of strings representing the user's expertise
+  seniority_level: string; // String representing the seniority level of the user
+  work_experience: WorkExperience[]; // Array of WorkExperience objects
+  education: Education[]; // Array of Education objects
+  linkedin: string | null; // URL to the LinkedIn profile
+  twitter: string | null; // URL to the Twitter profile
+  website: string | null; // URL to a personal or professional website
+}
+
+// Define a type for WorkExperience
+export interface WorkExperience {
+  role: string;
+  company: string;
+  industry: string[];
+  start_date: Date; // Using Date type, format as needed when displaying
+  end_date: Date | null; // Nullable if the user is currently in this role
+  brief: string;
+}
+
+// Define a type for Education
+export interface Education {
+  university_or_college: string;
+  field_of_study: string;
+  timeline: string; // Example: "2012 - 2014"
 }
 
 // TEXT TYPES
@@ -55,6 +82,14 @@ export type FontSize = 4 | 8 | 12 | 16 | 20 | 24 | 28 | 32 | 36 | 40; // Adjust 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export type SubheadingSize = "subheading1" | "subheading2" | "subheading3";
+export type DatePart =
+  | "year"
+  | "month"
+  | "date"
+  | "time"
+  | "hours"
+  | "minutes"
+  | "seconds";
 
 export type Style = {
   [key: string]: React.CSSProperties;

@@ -3,7 +3,6 @@ import { useField } from "formik";
 
 interface Props {
   label?: string;
-  type?: React.HTMLInputTypeAttribute;
   size?: "default" | "large" | "small";
   error?: string;
   success?: string;
@@ -20,12 +19,11 @@ const sizes = {
   large:
     "block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500",
   small:
-    "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 ",
+    "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500",
 };
 
-export default function Input({
+export default function Textarea({
   label,
-  type,
   error,
   success,
   helperText,
@@ -36,14 +34,10 @@ export default function Input({
   onChange,
 }: Props) {
   const finalSize = sizes[size];
-
-  /* eslint-disable */
-
   const [field, meta, helpers] = useField(name);
-  /* eslint-enable */
 
   const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       helpers.setValue(event.target.value);
       if (onChange && typeof onChange === "function") {
         onChange(name, event.target.value);
@@ -51,37 +45,41 @@ export default function Input({
     },
     [helpers, name, onChange],
   );
-
   return (
     <>
-      {label !== undefined && (
+      {label && (
         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           {label}
         </label>
       )}
-      <input
-        className={finalSize}
-        type={type}
-        placeholder={placeholder}
-        onChange={handleChange}
+      <textarea
+        {...field}
         value={meta.value}
+        className={`${finalSize} resize-none`} // Added resize-none to disable resizing, remove if resizing is needed
+        placeholder={placeholder}
         disabled={disabled}
+        onChange={handleChange}
+        aria-invalid={meta.error && meta.touched ? "true" : undefined}
+        aria-describedby={`${name}-feedback ${name}-help`}
       />
-      {helperText !== undefined && (
+      {helperText && (
         <p
-          id="helper-text"
+          id={`${name}-help`}
           className="mt-2 text-sm text-gray-500 dark:text-gray-400"
         >
           {helperText}
         </p>
       )}
-      {success !== undefined && (
+      {success && (
         <p className="mt-2 text-sm text-green-600 dark:text-green-500">
           {success}
         </p>
       )}
       {meta.touched && meta.error && (
-        <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+        <p
+          id={`${name}-feedback`}
+          className="mt-2 text-sm text-red-600 dark:text-red-500"
+        >
           {error ?? meta.error}
         </p>
       )}

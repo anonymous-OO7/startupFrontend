@@ -70,11 +70,12 @@ const PostBlock = ({ post }: PostBlockProps) => {
             width={100}
             height={100}
             className="h-64 xs:h-[350px] lg:h-[400px] w-full rounded-[24px] object-cover mb-5"
-            // src={post.mediaUrl}
-            src={
-              "https://kinsta.com/wp-content/uploads/2019/08/jpg-vs-jpeg.jpg"
-            }
+            src={post.mediaUrl}
+            // src={
+            //   "https://kinsta.com/wp-content/uploads/2019/08/jpg-vs-jpeg.jpg"
+            // }
             alt="File"
+            unoptimized={true} //remove in production
           />
         </Link>
 
